@@ -11,7 +11,43 @@ namespace Alura.Loja.Testes.ConsoleApp
         static void Main(string[] args)
         {
             //GravarUsandoAdoNet();
-            GravarUsandoEntity();
+            //GravarUsandoEntity();
+            //RecuperaUsandoEntity();
+            AtualizausandoEntity();
+        }
+        private static void AtualizausandoEntity()
+        {
+            using (var context = new LojaContext())
+            {
+                Produto p = new Produto();
+                p.Id = 4;
+                p = context.Produtos.FirstOrDefault(prd => prd.Id == p.Id);
+                p.Nome = "Por que dormimos?";
+                p.Categoria = "Livros";
+                p.Preco = 16.50;
+
+                context.Produtos.Update(p);
+                context.SaveChanges();
+            }
+        }
+        private static void RemoveUsandoEntity(int Id)
+        {
+            using (var context = new LojaContext())
+            {
+                context.Produtos.Remove(context.Produtos.Where(pd => pd.Id == Id).First());
+                context.SaveChanges();
+            }
+        }
+        private static void RecuperaUsandoEntity()
+        {
+            using (var context = new LojaContext())
+            {
+                List < Produto > produtos = context.Produtos.ToList();
+                foreach (var item in produtos)
+                {
+                    Console.WriteLine(item.Nome);
+                }
+            }
         }
         private static void GravarUsandoEntity()
         {
