@@ -24,7 +24,7 @@ namespace Alura.Loja.Testes.ConsoleApp
                 p = context.Produtos.FirstOrDefault(prd => prd.Id == p.Id);
                 p.Nome = "Por que dormimos?";
                 p.Categoria = "Livros";
-                p.Preco = 16.50;
+                p.PrecoUnitario = 16.50;
 
                 context.Produtos.Update(p);
                 context.SaveChanges();
@@ -54,7 +54,7 @@ namespace Alura.Loja.Testes.ConsoleApp
             Produto p = new Produto();
             p.Nome = "Harry Potter e a Ordem da Fênix";
             p.Categoria = "Livros";
-            p.Preco = 19.89;
+            p.PrecoUnitario = 19.89;
 
             using (var context = new LojaContext())
             {
@@ -67,7 +67,7 @@ namespace Alura.Loja.Testes.ConsoleApp
             Produto p = new Produto();
             p.Nome = "Harry Potter e a Ordem da Fênix";
             p.Categoria = "Livros";
-            p.Preco = 19.89;
+            p.PrecoUnitario = 19.89;
 
             using (var repo = new ProdutoDAO())
             {
