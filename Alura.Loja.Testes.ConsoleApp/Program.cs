@@ -22,7 +22,8 @@ namespace Alura.Loja.Testes.ConsoleApp
 
             using (var context = new LojaContext())
             {
-                context.Adicionar(p);
+                context.Produtos.Add(p);
+                context.SaveChanges();
             }
         }
         private static void GravarUsandoAdoNet()

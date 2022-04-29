@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using Alura.Loja.Testes.ConsoleApp;
 
 namespace Alura.Loja.Testes.ConsoleApp
 {
@@ -8,9 +7,11 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         public DbSet<Produto> Produtos { get; set; }
 
-        protected override void Onconfiguring (DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=LojaDB;Trusted_Connection=true;");
+            //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=LojaDB;Trusted_Connection=true;");
+            //optionsBuilder.UseSqlServer("Data Source=localdb;Initial Catalog=LojaDB; Integrated Security=true");
+            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=LojaDB; Integrated Security=true");
         }
     }
 }
