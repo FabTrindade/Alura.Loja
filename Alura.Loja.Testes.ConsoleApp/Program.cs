@@ -10,11 +10,28 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //GravarUsandoAdoNet();
-            //GravarUsandoEntity();
-            //RecuperaUsandoEntity();
-            AtualizausandoEntity();
+            Produto paofrances = new Produto
+            {
+                Nome = "Pão Francês",
+                Categoria = "Padaria",
+                PrecoUnitario = 10.99,
+                Unidade = "kg"
+            };
+
+            Compra compra = new Compra()
+            {
+                Quantidade = 6,
+                Produto = paofrances,                
+            };
+            compra.Preco = paofrances.PrecoUnitario * compra.Quantidade;
+
+            using(var context = new LojaContext())
+            {
+                context.Compras.Add(compra);
+                context.SaveChanges();
+            }
         }
+
         private static void AtualizausandoEntity()
         {
             using (var context = new LojaContext())
